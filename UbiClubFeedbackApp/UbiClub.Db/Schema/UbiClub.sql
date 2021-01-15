@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [UbiClub]
+	AUTHORIZATION [dbo];
