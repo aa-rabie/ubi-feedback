@@ -22,6 +22,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DacApplicationName>UbiClub</DacApplicationName>
+    <DefaultSchema>UbiClub</DefaultSchema>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -59,10 +61,17 @@
     <Folder Include="UbiClub" />
     <Folder Include="Schema" />
     <Folder Include="UbiClub\Tables" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="UbiClub\Tables\t_GameSession.sql" />
     <Build Include="Schema\UbiClub.sql" />
     <Build Include="UbiClub\Tables\t_SessionFeedback.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\InsertGameSession_TestData.sql" />
   </ItemGroup>
 </Project>
