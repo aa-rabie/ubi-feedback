@@ -1,9 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Newtonsoft.Json;
 using UbiClub.Feedback.Api.Interfaces;
 using UbiClub.Feedback.Core.Models;
@@ -13,23 +11,32 @@ namespace UbiClub.Feedback.Api.ModelFactory
     internal class FeedbackCreateModelFactory : IFeedbackCreateModelFactory
     {
         private const string UserIdHeaderName = "Ubi-UserId";
-        public async Task<FeedbackCreateModel> CreateAsync(HttpRequest req, Guid? sessionId)
+        public FeedbackCreateModel Create(string requestBody, IHeaderDictionary headers, Guid? sessionId)
         {
-            var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            var ratingModel = JsonConvert.DeserializeObject<RatingModel>(requestBody);
+            var ratingModel = JsonConvert.DeserializeObject<RatingModel>(requestBody ?? string.Empty);
+
             var model = new FeedbackCreateModel()
             {
-                SessionId = sessionId,
-                Rating = ratingModel.Rating
+                SessionId = sessionId
             };
 
-            if (req.Headers.TryGetValue(UserIdHeaderName, out var headerValue))
+            if (!String.IsNullOrEmpty(ratingModel.Rating))
+            {
+               if(byte.TryParse(ratingModel.Rating, out var ratingValue))
+               {
+                    model.Rating = ratingValue;
+               }
+            }
+
+            if (headers != null && headers.Any() && headers.TryGetValue(UserIdHeaderName, out var headerValue))
             {
                 var strUserId = headerValue.FirstOrDefault();
-                if (!String.IsNullOrEmpty(strUserId)
-                    && Guid.TryParse(strUserId, out var userId))
+                if (!String.IsNullOrEmpty(strUserId))
                 {
-                    model.UserId = userId;
+                    if (Guid.TryParse(strUserId, out var userId))
+                    {
+                        model.UserId = userId;
+                    }
                 }
             }
 

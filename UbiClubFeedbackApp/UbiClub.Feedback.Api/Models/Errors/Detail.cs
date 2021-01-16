@@ -1,4 +1,4 @@
-﻿namespace UbiClub.Feedback.Core.Errors
+﻿namespace UbiClub.Feedback.Api.Models.Errors
 {
     public class Detail
     {

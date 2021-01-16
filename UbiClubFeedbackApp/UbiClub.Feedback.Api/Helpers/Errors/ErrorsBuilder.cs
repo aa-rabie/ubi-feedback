@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using UbiClub.Feedback.Core.Errors;
+using UbiClub.Feedback.Api.Models.Errors;
 
 namespace UbiClub.Feedback.Api.Helpers.Errors
 {
@@ -12,7 +13,7 @@ namespace UbiClub.Feedback.Api.Helpers.Errors
         {
             return new ObjectResult(new Error
             {
-                Code = ErrorCodes.NotAllowed,
+                Code = ErrorCodes.InternalServerError,
                 Message = "Something wrong. Please contact system support."
             })
             {
@@ -37,13 +38,13 @@ namespace UbiClub.Feedback.Api.Helpers.Errors
             });
         }
 
-        public static BadRequestObjectResult BuildBadArgumentError(string msg, ValidationResult validationResult)
+        public static BadRequestObjectResult BuildBadArgumentError(string msg, IList<ValidationFailure> errors)
         {
             return new BadRequestObjectResult(new Error
             {
                 Code = ErrorCodes.BadArgument,
                 Message = msg,
-                Details = validationResult.Errors.Select(ve => new Detail()
+                Details = errors.Select(ve => new Detail()
                 {
                     Target = ve.PropertyName,
                     Message = ve.ErrorMessage

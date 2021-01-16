@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -8,13 +7,11 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using UbiClub.Feedback.Api.Constants;
 using UbiClub.Feedback.Api.Exceptions;
 using UbiClub.Feedback.Api.Helpers.Errors;
 using UbiClub.Feedback.Api.Helpers.Routing;
 using UbiClub.Feedback.Api.Interfaces;
-using UbiClub.Feedback.Core.Errors;
 using UbiClub.Feedback.Core.Models;
 
 namespace UbiClub.Feedback.Api.Functions
@@ -40,12 +37,18 @@ namespace UbiClub.Feedback.Api.Functions
         {
             try
             {
-                var model = await _modelFactory.CreateAsync(req, sessionId);
+                var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                var model = _modelFactory.Create(requestBody, req.Headers, sessionId, out var errors);
+                if (errors.Any())
+                {
+                    return ErrorsBuilder.BuildBadArgumentError("Feedback Create Request Data are invalid",
+                        errors);
+                }
                 var result = _validator.Validate(model);
                 if (!result.IsValid)
                 {
                     return ErrorsBuilder.BuildBadArgumentError("Feedback Create Request Data are invalid/missing",
-                        result);
+                        result.Errors);
                 }
 
                 var feedbackDto = await _handler.HandleAsync(model);

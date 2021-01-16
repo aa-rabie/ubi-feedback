@@ -2,6 +2,6 @@
 {
     public class RatingModel
     {
-        public byte? Rating { get; set; }
+        public string Rating { get; set; }
     }
 }
