@@ -5,5 +5,6 @@
         public const string BadArgument = nameof(BadArgument);
         public const string NotAllowed = nameof(NotAllowed);
         public const string InternalServerError = nameof(InternalServerError);
+        public const string NotFound = nameof(NotFound);
     }
 }

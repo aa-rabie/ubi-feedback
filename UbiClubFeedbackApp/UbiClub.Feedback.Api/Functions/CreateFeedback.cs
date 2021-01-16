@@ -43,7 +43,7 @@ namespace UbiClub.Feedback.Api.Functions
                 var result = _validator.Validate(model);
                 if (!result.IsValid)
                 {
-                    return ErrorsBuilder.BuildBadArgumentError("Feedback Create Request Data are invalid/missing",
+                    return ErrorsBuilder.BuildBadArgumentError("Feedback Create Request Data contains invalid/missing arguments",
                         result.Errors);
                 }
 
@@ -53,7 +53,7 @@ namespace UbiClub.Feedback.Api.Functions
             }
             catch (SessionNotFoundException snfEx)
             {
-                return ErrorsBuilder.BuildBadArgumentError(snfEx.Message);
+                return ErrorsBuilder.BuildNotFoundError(snfEx.Message);
             }
             catch (FeedbackCreateRequestNotAllowedException snfEx)
             {
@@ -61,6 +61,7 @@ namespace UbiClub.Feedback.Api.Functions
             }
             catch (Exception ex)
             {
+                //TODO : add logging
                 return ErrorsBuilder.BuildInternalServerError();
             }
         }

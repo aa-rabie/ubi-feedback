@@ -47,16 +47,19 @@ namespace UbiClub.Feedback.Api.Infrastructure
         private void ConfigureValidators(IServiceCollection services)
         {
             services.AddTransient<IValidator<FeedbackCreateModel>, FeedbackCreateModelValidator>();
+            services.AddTransient<IValidator<FeedbackGetModel>, FeedbackGetModelValidator>();
         }
 
         private void ConfigureModelFactories(IServiceCollection services)
         {
             services.AddTransient<IFeedbackCreateModelFactory, FeedbackCreateModelFactory>();
+            services.AddTransient<IFeedbackGetModelFactory, FeedbackGetModelFactory>();
         }
 
         private void ConfigureRequestHandlers(IServiceCollection services)
         {
             services.AddTransient<IFeedbackCreateRequestHandler, FeedbackCreateRequestHandler>();
+            services.AddTransient<IFeedbackGetRequestHandler, FeedbackGetRequestHandler>();
         }
     }
 }

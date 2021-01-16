@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using UbiClub.Feedback.Core.Dto;
 using UbiClub.Feedback.Data.Interfaces;
@@ -36,6 +39,18 @@ namespace UbiClub.Feedback.Data.Services
         {
             return await _repo.CountAsync<SessionFeedback>(f => f.SessionId
                                                                 == sessionId && f.UserId == userId);
+        }
+
+        public async Task<List<SessionFeedbackDto>> GetFeedbackListAsync(byte? rating
+        , int offset, int limit)
+        {
+            Expression<Func<SessionFeedback, bool>> filter = null;
+            if (rating.HasValue)
+            {
+                filter = feedback => feedback.Rating == rating.Value;
+            }
+            var data = await _repo.FindAsync<SessionFeedback>(filter, q => q.OrderByDescending(e => e.CreatedDate), string.Empty, limit: limit, offset: offset);
+            return _mapper.Map<List<SessionFeedbackDto>>(data);
         }
     }
 }

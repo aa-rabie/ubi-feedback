@@ -51,6 +51,15 @@ namespace UbiClub.Feedback.Api.Helpers.Errors
                 }).ToList()
             });
         }
+
+        public static NotFoundObjectResult BuildNotFoundError(string msg)
+        {
+            return new NotFoundObjectResult(new Error
+            {
+                Code = ErrorCodes.NotFound,
+                Message = msg
+            });
+        }
     }
     
 }

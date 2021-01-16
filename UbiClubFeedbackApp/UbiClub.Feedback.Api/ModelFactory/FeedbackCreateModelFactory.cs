@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using UbiClub.Feedback.Api.Interfaces;

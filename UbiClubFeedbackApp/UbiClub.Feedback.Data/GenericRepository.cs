@@ -114,5 +114,35 @@ namespace UbiClub.Feedback.Data
 
             return await _context.SaveChangesAsync();
         }
-	}
+
+        public async Task<List<TEntity>> FindAsync<TEntity>(Expression<Func<TEntity, bool>> filter,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,
+            string includeProperties, int limit, int offset, bool noTracking = true) where TEntity : BaseEntity
+        {
+            var query = GetQuery<TEntity>(noTracking);
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            query = includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+
+            if (offset >= 0)
+            {
+                query = query.Skip(offset);
+            }
+
+            if (limit > 0)
+            {
+                query = query.Take(limit);
+            }
+            return await query.ToListAsync();
+        }
+    }
 }

@@ -41,5 +41,9 @@ namespace UbiClub.Feedback.Data.Interfaces
 
             Task<int> SaveAsync();
 
-    }
+            Task<List<TEntity>> FindAsync<TEntity>(Expression<Func<TEntity, bool>> filter,
+                Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,
+                string includeProperties, int limit, int offset, bool noTracking = true) where TEntity : BaseEntity;
+
+        }
 }
