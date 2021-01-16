@@ -48,7 +48,7 @@ namespace UbiClub.Feedback.Api.Functions
                 }
 
                 var feedbackDto = await _handler.HandleAsync(model);
-                var location = RoutesHelper.BuildFeedbackGetUrl(feedbackDto.Id);
+                var location = RoutesHelper.BuildFeedbackGetUrl(feedbackDto.Id, req.Host.Value ?? string.Empty);
                 return new CreatedResult(location, feedbackDto);
             }
             catch (SessionNotFoundException snfEx)
