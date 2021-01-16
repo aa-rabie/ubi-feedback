@@ -9,7 +9,7 @@ namespace UbiClub.Feedback.Api.Validators
         {
             RuleFor(model => model.SessionId).NotNull();
             RuleFor(model => model.UserId).NotNull();
-            RuleFor(model => model.Rating).NotNull().InclusiveBetween((byte)1, (byte)10);
+            RuleFor(model => model.Rating).NotNull().InclusiveBetween((byte)1, (byte)5);
         }
     }
 }
