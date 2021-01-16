@@ -38,12 +38,8 @@ namespace UbiClub.Feedback.Api.Functions
             try
             {
                 var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-                var model = _modelFactory.Create(requestBody, req.Headers, sessionId, out var errors);
-                if (errors.Any())
-                {
-                    return ErrorsBuilder.BuildBadArgumentError("Feedback Create Request Data are invalid",
-                        errors);
-                }
+                var model = _modelFactory.Create(requestBody, req.Headers, sessionId);
+
                 var result = _validator.Validate(model);
                 if (!result.IsValid)
                 {
