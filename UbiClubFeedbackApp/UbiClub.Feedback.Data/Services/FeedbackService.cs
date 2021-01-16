@@ -31,5 +31,11 @@ namespace UbiClub.Feedback.Data.Services
             await _repo.SaveAsync();
             return _mapper.Map<SessionFeedbackDto>(entity);
         }
+
+        public async Task<int> GetFeedbackCountPerUserSessionAsync(Guid sessionId, Guid userId)
+        {
+            return await _repo.CountAsync<SessionFeedback>(f => f.SessionId
+                                                                == sessionId && f.UserId == userId);
+        }
     }
 }

@@ -11,7 +11,8 @@ namespace UbiClub.Feedback.Api.Infrastructure.AutoMapper
     {
         public FeedbackProfile()
         {
-            CreateMap<SessionFeedback, SessionFeedbackDto>().ReverseMap();
+            CreateMap<SessionFeedback, SessionFeedbackDto>();
+            CreateMap<GameSession, GameSessionDto>();
         }
     }
 }

@@ -7,5 +7,6 @@ namespace UbiClub.Feedback.Data.Interfaces
     public interface IFeedbackService
     {
         Task<SessionFeedbackDto> AddFeedbackAsync(Guid sessionId, Guid userId, byte rating);
+        Task<int> GetFeedbackCountPerUserSessionAsync(Guid sessionId, Guid userId);
     }
 }
