@@ -4,6 +4,10 @@ namespace UbiClub.Feedback.Entities
 {
     public class FeedbackContext : DbContext
     {
+        public FeedbackContext(DbContextOptions<FeedbackContext> options)
+        : base(options) {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("UbiClub");
