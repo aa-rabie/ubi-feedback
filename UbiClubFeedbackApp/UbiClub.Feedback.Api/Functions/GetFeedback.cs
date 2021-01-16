@@ -7,6 +7,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using UbiClub.Feedback.Api.Constants;
+using UbiClub.Feedback.Api.Extensions;
 using UbiClub.Feedback.Api.Helpers.Errors;
 using UbiClub.Feedback.Api.Helpers.Routing;
 using UbiClub.Feedback.Api.Interfaces;
@@ -30,8 +31,8 @@ namespace UbiClub.Feedback.Api.Functions
 
         [FunctionName(FunctionNames.GetFeedback)]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "Get", Route = 
-                PathSegments.Feedback)] HttpRequest req, ILogger log)
+            [HttpTrigger(AuthorizationLevel.Function, HttpVerbs.Get, Route = 
+                PathSegments.Feedback)] HttpRequest req, ILogger logger)
         {
             try
             {
@@ -48,7 +49,15 @@ namespace UbiClub.Feedback.Api.Functions
             }
             catch (Exception ex)
             {
-                //TODO: logging
+                //TODO : configure app to log to Azure AppInsights
+                if (ex is AggregateException agx)
+                {
+                    logger.WriteAggregateException(agx);
+                }
+                else
+                {
+                    logger.WriteException(ex);
+                }
                 return ErrorsBuilder.BuildInternalServerError();
             }
         }
