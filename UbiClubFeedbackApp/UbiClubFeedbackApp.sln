@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "UbiClub.Db", "UbiClub.Db\UbiClub.Db.sqlproj", "{52A9CF2F-EA34-4D60-AD74-D5926C9874B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbiClub.Feedback.Core", "UbiClub.Feedback.Core\UbiClub.Feedback.Core.csproj", "{B97CCB5F-D684-4286-B6CB-87777FD6A67E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UbiClub.Feedback.Core", "UbiClub.Feedback.Core\UbiClub.Feedback.Core.csproj", "{B97CCB5F-D684-4286-B6CB-87777FD6A67E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbiClub.Feedback.Entities", "UbiClub.Feedback.Entities\UbiClub.Feedback.Entities.csproj", "{2DD966B0-8214-4A75-82E8-1E08E06D9395}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UbiClub.Feedback.Entities", "UbiClub.Feedback.Entities\UbiClub.Feedback.Entities.csproj", "{2DD966B0-8214-4A75-82E8-1E08E06D9395}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbiClub.Feedback.Api", "UbiClub.Feedback.Api\UbiClub.Feedback.Api.csproj", "{3E125E04-A794-4BF8-8FAE-D1AFE2AF6262}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UbiClub.Feedback.Api", "UbiClub.Feedback.Api\UbiClub.Feedback.Api.csproj", "{3E125E04-A794-4BF8-8FAE-D1AFE2AF6262}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbiClub.Feedback.Data", "UbiClub.Feedback.Data\UbiClub.Feedback.Data.csproj", "{AB19D34B-BD1A-4711-BEBC-CF5E26045E38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UbiClub.Feedback.Data", "UbiClub.Feedback.Data\UbiClub.Feedback.Data.csproj", "{AB19D34B-BD1A-4711-BEBC-CF5E26045E38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbiClub.Feedback.Tests", "UbiClub.Feedback.Tests\UbiClub.Feedback.Tests.csproj", "{05C88D91-39B3-4FB1-AD16-B74074DD2034}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{AB19D34B-BD1A-4711-BEBC-CF5E26045E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB19D34B-BD1A-4711-BEBC-CF5E26045E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB19D34B-BD1A-4711-BEBC-CF5E26045E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05C88D91-39B3-4FB1-AD16-B74074DD2034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C88D91-39B3-4FB1-AD16-B74074DD2034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C88D91-39B3-4FB1-AD16-B74074DD2034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C88D91-39B3-4FB1-AD16-B74074DD2034}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

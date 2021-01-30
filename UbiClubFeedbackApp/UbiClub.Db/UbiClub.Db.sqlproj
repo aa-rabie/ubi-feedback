@@ -24,6 +24,7 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <DacApplicationName>UbiClub</DacApplicationName>
     <DefaultSchema>UbiClub</DefaultSchema>
+    <GenerateCreateScript>True</GenerateCreateScript>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -47,6 +48,7 @@
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <SqlTargetName>UbiClub</SqlTargetName>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
@@ -74,4 +76,7 @@
   <ItemGroup>
     <None Include="Scripts\InsertGameSession_TestData.sql" />
   </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)$(OutputPath)UbiClub.dacpac" "$(ProjectDir)..\db-dacpac\" /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
