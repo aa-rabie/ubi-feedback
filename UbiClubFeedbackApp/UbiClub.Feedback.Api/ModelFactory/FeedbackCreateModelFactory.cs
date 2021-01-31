@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using UbiClub.Feedback.Api.Interfaces;
 using UbiClub.Feedback.Core.Models;
+[assembly: InternalsVisibleToAttribute("UbiClub.Feedback.Tests")]
 
 namespace UbiClub.Feedback.Api.ModelFactory
 {

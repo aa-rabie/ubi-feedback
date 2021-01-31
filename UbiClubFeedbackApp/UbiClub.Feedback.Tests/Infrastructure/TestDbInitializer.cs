@@ -12,13 +12,12 @@ namespace UbiClub.Feedback.Tests.Infrastructure
         internal static bool DatabaseInitialized => _databaseInitialized;
 
         private const string DacpacFileName = "UbiClub.dacpac";
-        private const string OriginalDbName = "UbiClub.Db";
         internal const string TargetDbName = "UbiClub.Test";
         private const string MasterDbName = "master";
 
         private const string ConnectionStringTemplate =
             "Data Source=(LocalDB)\\MSSQLLocalDB;Integrated Security=true;Database={0}";
-        internal string ConnectionString => string.Format(ConnectionStringTemplate, TargetDbName);
+        internal static string TestDbConnectionString => string.Format(ConnectionStringTemplate, TargetDbName);
         private string MasterConnectionString => string.Format(ConnectionStringTemplate, MasterDbName);
         
         /// <summary>
