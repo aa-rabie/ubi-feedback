@@ -26,7 +26,7 @@ namespace UbiClub.Feedback.Tests.Services
         }
 
         [Test]
-        public async Task TestQueryingValidDataRunSuccessfully()
+        public async Task GetAsync_ValidInput_ReturnData()
         {
             using (var scope = _container.CreateScope())
             {
@@ -41,7 +41,7 @@ namespace UbiClub.Feedback.Tests.Services
         }
 
         [Test]
-        public async Task TestQueryingInvalidDataReturnNull()
+        public async Task GetAsync_DataNotFound_ReturnsNull()
         {
             using (var scope = _container.CreateScope())
             {
