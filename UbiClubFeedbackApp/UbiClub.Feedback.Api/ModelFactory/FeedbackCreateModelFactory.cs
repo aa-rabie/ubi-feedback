@@ -11,7 +11,7 @@ namespace UbiClub.Feedback.Api.ModelFactory
 {
     internal class FeedbackCreateModelFactory : IFeedbackCreateModelFactory
     {
-        private const string UserIdHeaderName = "Ubi-UserId";
+        internal const string UserIdHeaderName = "Ubi-UserId";
         public FeedbackCreateModel Create(string requestBody, IHeaderDictionary headers, Guid? sessionId)
         {
             var ratingModel = JsonConvert.DeserializeObject<RatingModel>(requestBody ?? string.Empty);
@@ -21,7 +21,7 @@ namespace UbiClub.Feedback.Api.ModelFactory
                 SessionId = sessionId
             };
 
-            if (!String.IsNullOrEmpty(ratingModel.Rating))
+            if (!String.IsNullOrEmpty(ratingModel?.Rating))
             {
                if(byte.TryParse(ratingModel.Rating, out var ratingValue))
                {

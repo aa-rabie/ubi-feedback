@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Data;
 using System.IO;
 using Microsoft.SqlServer.Dac;
 
 namespace UbiClub.Feedback.Tests.Infrastructure
 {
-    public class TestDbInitializer
+    internal class TestDbInitializer
     {
         private static readonly object _lock = new object();
         private static bool _databaseInitialized;

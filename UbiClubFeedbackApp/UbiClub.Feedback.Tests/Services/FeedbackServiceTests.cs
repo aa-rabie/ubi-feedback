@@ -6,26 +6,12 @@ using NUnit.Framework;
 using UbiClub.Feedback.Data.Interfaces;
 using UbiClub.Feedback.Entities;
 using UbiClub.Feedback.Tests.Helpers;
-using UbiClub.Feedback.Tests.Infrastructure;
 
 namespace UbiClub.Feedback.Tests.Services
 {
     [TestFixture]
-    public class FeedbackServiceTests
+    internal class FeedbackServiceTests : BaseTest
     {
-        private DiContainer _container;
-        [OneTimeSetUp]
-        public void Setup()
-        {
-            _container = new DiContainer(TestDbInitializer.TestDbConnectionString);
-        }
-
-        [OneTimeTearDown]
-        public void TearDown()
-        {
-            _container?.Dispose();
-        }
-
         [Test]
         public async Task AddFeedback_Pass()
         {
