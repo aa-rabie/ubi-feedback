@@ -3,7 +3,7 @@ using UbiClub.Feedback.Tests.Infrastructure;
 
 namespace UbiClub.Feedback.Tests
 {
-    [TestFixture]
+    [SetUpFixture]
     public class ProjectSetup
     {
         [OneTimeSetUp]

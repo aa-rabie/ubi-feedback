@@ -9,16 +9,17 @@ using UbiClub.Feedback.Tests.Infrastructure;
 namespace UbiClub.Feedback.Tests.Services
 
 {
-    public class GameSessionServiceTests : ProjectSetup
+    [TestFixture]
+    public class GameSessionServiceTests 
     {
         private DiContainer _container;
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
           _container = new DiContainer(TestDbInitializer.TestDbConnectionString);
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             _container?.Dispose();
