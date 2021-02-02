@@ -80,5 +80,29 @@ namespace UbiClub.Feedback.Tests.ModelFactories
                 Assert.True(model.SessionId.HasValue && model.SessionId.Value == sessionId);
             }
         }
+
+        [Test]
+        public void Create_RequestBodyWithInvalidValue_ModelCreatedWithoutRating()
+        {
+            //Act
+            using (var scope = _container.CreateScope())
+            {
+                //Arrange
+                var factory = scope.ServiceProvider.GetRequiredService<IFeedbackCreateModelFactory>();
+                var userId = Guid.NewGuid();
+                var headers = new HeaderDictionary();
+                headers.Append(FeedbackCreateModelFactory.UserIdHeaderName, userId.ToString());
+                var sessionId = ExpectedTestData.GameSessionIds[0];
+                var requestBody = @"{ ""rating"": ""abc""}";
+
+                //Act
+                var model = factory.Create(requestBody, headers, sessionId);
+
+                //Assert
+                Assert.False(model.Rating.HasValue);
+                Assert.True(model.UserId.HasValue && model.UserId.Value == userId);
+                Assert.True(model.SessionId.HasValue && model.SessionId.Value == sessionId);
+            }
+        }
     }
 }

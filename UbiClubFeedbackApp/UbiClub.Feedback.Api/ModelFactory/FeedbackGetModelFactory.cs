@@ -8,7 +8,7 @@ namespace UbiClub.Feedback.Api.ModelFactory
 {
     internal class FeedbackGetModelFactory : IFeedbackGetModelFactory
     {
-        private const string RatingQueryParamName = "rating";
+        internal const string RatingQueryParamName = "rating";
         public FeedbackGetModel Create(IQueryCollection queryCol)
         {
             var model = new FeedbackGetModel();
