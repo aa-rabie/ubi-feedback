@@ -14,7 +14,7 @@ namespace UbiClub.Feedback.Tests.ModelFactory
         [Test]
         public void Create_ValidInput_ModelCreatedWithRating()
         {
-            //Act
+           
             using (var scope = _container.CreateScope())
             {
                 //Arrange
@@ -32,7 +32,7 @@ namespace UbiClub.Feedback.Tests.ModelFactory
         [Test]
         public void Create_InvalidInput_ModelCreatedWithoutRating()
         {
-            //Act
+            
             using (var scope = _container.CreateScope())
             {
                 //Arrange
@@ -50,7 +50,7 @@ namespace UbiClub.Feedback.Tests.ModelFactory
         [Test]
         public void Create_EmptyQueryCollection_ModelCreatedWithoutRating()
         {
-            //Act
+           
             using (var scope = _container.CreateScope())
             {
                 //Arrange

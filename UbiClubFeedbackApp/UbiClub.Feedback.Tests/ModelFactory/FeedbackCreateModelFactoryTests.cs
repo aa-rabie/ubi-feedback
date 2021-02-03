@@ -15,7 +15,7 @@ namespace UbiClub.Feedback.Tests.ModelFactory
         [Test]
         public void Create_ValidInput_ModelCreatedSuccessfully()
         {
-            //Act
+            
             using (var scope = _container.CreateScope())
             {
                 //Arrange
@@ -39,7 +39,7 @@ namespace UbiClub.Feedback.Tests.ModelFactory
         [Test]
         public void Create_MissingHeader_ModelCreatedWithoutUserId()
         {
-            //Act
+            
             using (var scope = _container.CreateScope())
             {
                 //Arrange
@@ -61,7 +61,7 @@ namespace UbiClub.Feedback.Tests.ModelFactory
         [Test]
         public void Create_EmptyRequestBody_ModelCreatedWithoutRating()
         {
-            //Act
+           
             using (var scope = _container.CreateScope())
             {
                 //Arrange
@@ -84,7 +84,7 @@ namespace UbiClub.Feedback.Tests.ModelFactory
         [Test]
         public void Create_RequestBodyWithInvalidValue_ModelCreatedWithoutRating()
         {
-            //Act
+            
             using (var scope = _container.CreateScope())
             {
                 //Arrange
