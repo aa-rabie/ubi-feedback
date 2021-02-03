@@ -5,7 +5,7 @@ using UbiClub.Feedback.Api.Interfaces;
 using UbiClub.Feedback.Api.ModelFactory;
 using UbiClub.Feedback.Tests.Fakes;
 
-namespace UbiClub.Feedback.Tests.ModelFactories
+namespace UbiClub.Feedback.Tests.ModelFactory
 {
     [TestFixture]
     internal class FeedbackGetModelFactoryTests : BaseTest
