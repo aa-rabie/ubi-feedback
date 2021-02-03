@@ -15,7 +15,7 @@ namespace UbiClub.Feedback.Tests.RequestHandlers
     internal class FeedbackCreateRequestHandlerTests : BaseTest
     {
         [Test]
-        public async Task HandleAsync_InvalidSessionId_ExceptionThrown()
+        public void HandleAsync_InvalidSessionId_ExceptionThrown()
         {
             //Arrange
             var gameSessionServiceMock = new Mock<IGameSessionService>();
@@ -43,7 +43,7 @@ namespace UbiClub.Feedback.Tests.RequestHandlers
         }
 
         [Test]
-        public async Task HandleAsync_UserSubmitMoreThanOnceInSession_ExceptionThrown()
+        public void HandleAsync_UserSubmitMoreThanOnceInSession_ExceptionThrown()
         {
             //Arrange
             var gameSessionServiceMock = new Mock<IGameSessionService>();

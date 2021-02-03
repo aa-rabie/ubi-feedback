@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using UbiClub.Feedback.Api.Interfaces;
 using UbiClub.Feedback.Api.ModelFactory;
