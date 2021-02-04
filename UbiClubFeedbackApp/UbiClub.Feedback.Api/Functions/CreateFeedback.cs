@@ -14,7 +14,6 @@ using UbiClub.Feedback.Api.Helpers.Errors;
 using UbiClub.Feedback.Api.Helpers.Routing;
 using UbiClub.Feedback.Api.Interfaces;
 using UbiClub.Feedback.Core.Models;
-using HttpMethods = Microsoft.AspNetCore.Http.HttpMethods;
 
 namespace UbiClub.Feedback.Api.Functions
 {

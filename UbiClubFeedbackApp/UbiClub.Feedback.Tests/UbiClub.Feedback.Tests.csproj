@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="FluentValidation" Version="9.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.11" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+    <PackageReference Include="Microsoft.SqlServer.DacFx" Version="150.4982.1-preview" />
+    <PackageReference Include="Moq" Version="4.16.0" />
+    <PackageReference Include="NUnit" Version="3.13.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.14.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UbiClub.Feedback.Api\UbiClub.Feedback.Api.csproj" />
+    <ProjectReference Include="..\UbiClub.Feedback.Core\UbiClub.Feedback.Core.csproj" />
+    <ProjectReference Include="..\UbiClub.Feedback.Data\UbiClub.Feedback.Data.csproj" />
+    <ProjectReference Include="..\UbiClub.Feedback.Entities\UbiClub.Feedback.Entities.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(ProjectDir)..\db-dacpac\UbiClub.dacpac&quot; $(TargetDir) /Y" />
+  </Target>
+
+</Project>
